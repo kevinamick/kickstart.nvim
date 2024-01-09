@@ -270,7 +270,7 @@ require('lazy').setup({
   { import = 'kamick.plugins' },
 }, {})
 
-require("kamick")
+require 'kamick'
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -426,11 +426,11 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
+    ensure_installed = { 'c', 'go', 'lua', 'python', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = true,
-
+    auto_update = true,
     highlight = { enable = true },
     indent = { enable = true },
     incremental_selection = {
@@ -585,7 +585,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
-  ensure_installed = vim.tbl_keys(servers),
+  ensure_installed = vim.tbl_keys(servers)
 }
 
 mason_lspconfig.setup_handlers {
